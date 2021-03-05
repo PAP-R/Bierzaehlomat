@@ -1,31 +1,40 @@
-const btnBeer05Plus = document.getElementById("btnBeer05Plus");
-const btnBeer05Minus = document.getElementById("btnBeer05Minus");
-const counterBeer05 = document.getElementById("counterBeer05");
+const drink = 0;
+const counter = [0];
 
-const drinkCounter = [0, 0, 0, 0];
+let btnPlus = document.getElementById("btnPlus")
+let btnMinus = document.getElementById("btnMinus");
+let btnMid = document.getElementById("btnMid");
 
-btnBeer05Plus.onclick = function(){
-    drinkCounter[0]++;
-    counterBeer05.textContent = drinkCounter[0];
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+//Clicks
+btnPlus.onclick = function(){
 }
 
-btnBeer05Plus.onmouseenter = function(){
-    btnBeer05Plus.setAttribute("src", "images/btnPlusHover.png");
+btnMinus.onclick = function(){
 }
 
-btnBeer05Plus.onmouseleave = function(){
-    btnBeer05Plus.setAttribute("src", "images/btnPlus.png");
+canvas.addEventListener('touchstart', handleTouchStart, false);
+canvas.addEventListener('touchmove', handleTouchMovement, false);
+
+var xDown = null;
+
+function getTouches(evt){
+    return evt.touches || evt.originalEvent.touches;
 }
 
-btnBeer05Minus.onclick = function(){
-    drinkCounter[0]--;
-    counterBeer05.textContent = drinkCounter[0];
+function handleTouchStart(evt){
+    const firtsTouch = getTouches(evt)[0];
+    xDown = firtsTouch.clientX;
 }
 
-btnBeer05Minus.onmouseenter = function(){
-    btnBeer05Minus.setAttribute("src", "images/btnMinusHover.png");
-}
+function handleTouchMovement(evt){
+    if(!xDown){
+        return;
+    }
 
-btnBeer05Minus.onmouseleave = function(){
-    btnBeer05Minus.setAttribute("src", "images/btnMinus.png");
+    var xUp = evt.touches[0].clientX;
+    var xDiff = xDown - xUp;
+
 }
