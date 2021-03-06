@@ -2,6 +2,12 @@ var pageSize = [null, null];
 
 var pageMiddle = [null, null];
 
+let someText = document.querySelector("h1");
+if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    // some code..
+}
+someText.textContent = navigator.userAgent;
+
 function windowSize(){
     if(typeof window.innerWidth != 'undefined'){
         pageSize[0] = window.innerWidth;
@@ -61,4 +67,13 @@ btnMinus.onmouseenter = function(){
 
 btnMinus.onmouseleave = function(){
     btnMinus.setAttribute("src", "images/btnMinus.png");
+}
+
+//Canvas Move
+canvas.ontouchstart = function(){
+    canvas.style.color = "rgb(0, 0, 0)";
+}
+
+canvas.ontouchend = function(){
+    canvas.style.color = "rgb(255, 255, 255)";
 }

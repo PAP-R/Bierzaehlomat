@@ -20,10 +20,6 @@ canvas.addEventListener('touchmove', handleTouchMovement, false);
 
 var xDown = null;
 
-function getTouches(evt){
-    return evt.touches || evt.originalEvent.touches;
-}
-
 function handleTouchStart(evt){
     const firtsTouch = getTouches(evt)[0];
     xDown = firtsTouch.clientX;
