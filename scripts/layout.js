@@ -1,11 +1,11 @@
 var pageSize = [null, null];
 var pageMiddle = [null, null];
 
-/*var mobile = false;
+var mobile = false;
 
 if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     mobile = true;
-}*/
+}
 
 function windowSize(){
     if(typeof window.innerWidth != 'undefined'){
@@ -65,58 +65,60 @@ function pageSizeUpdate(){
 }
 
 //Mouse Hover
-btnPlus.onmouseenter = function(){
-    btnPlus.setAttribute("src", "images/btnPlusHover.png");
-}
+if(!mobile){
+    btnPlus.onmouseenter = function(){
+        btnPlus.setAttribute("src", "images/btnPlusHover.png");
+    }
 
-btnPlus.onmouseleave = function(){
-    btnPlus.setAttribute("src", "images/btnPlus.png");
-}
+    btnPlus.onmouseleave = function(){
+        btnPlus.setAttribute("src", "images/btnPlus.png");
+    }
 
-btnMinus.onmouseenter = function(){
-    btnMinus.setAttribute("src", "images/btnMinusHover.png");
-}
+    btnMinus.onmouseenter = function(){
+        btnMinus.setAttribute("src", "images/btnMinusHover.png");
+    }
 
-btnMinus.onmouseleave = function(){
-    btnMinus.setAttribute("src", "images/btnMinus.png");
+    btnMinus.onmouseleave = function(){
+        btnMinus.setAttribute("src", "images/btnMinus.png");
+    }
 }
 
 //Canvas Move
-//Mouse
-canvas.ondragstart = function(){
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+if(!mobile){
+    //Mouse
+    canvas.ondragstart = function(){
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
-canvas.ondragend = function(){
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+    canvas.ondragend = function(){
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
-document.onmousemove = function(event){
-    var mousePos = [event.clientX, event.clientY];
-    
-    mouseCircle.style.left = (mousePos[0] - 50) + "px";
-    mouseCircle.style.top = (mousePos[1] - 50) + "px";
+    document.onmousemove = function(event){
+        var mousePos = [event.clientX, event.clientY];
+        
+        mouseCircle.style.left = (mousePos[0] - 50) + "px";
+        mouseCircle.style.top = (mousePos[1] - 50) + "px";
 
-    mouseTextX.style.left = (mousePos[0] + 60) + "px";
-    mouseTextX.style.top = (mousePos[1] - 50) + "px";
-    mouseTextX.textContent = "X:" + mousePos[0];
+        mouseTextX.style.left = (mousePos[0] + 60) + "px";
+        mouseTextX.style.top = (mousePos[1] - 50) + "px";
+        mouseTextX.textContent = "X:" + mousePos[0];
 
-    mouseTextY.style.left = (mousePos[0] + 60) + "px";
-    mouseTextY.style.top = (mousePos[1] - 25) + "px";
-    mouseTextY.textContent = "Y:" + mousePos[1];
-}
+        mouseTextY.style.left = (mousePos[0] + 60) + "px";
+        mouseTextY.style.top = (mousePos[1] - 25) + "px";
+        mouseTextY.textContent = "Y:" + mousePos[1];
+    }
+} else {
+    //Touch
+    canvas.ontouchstart = function(){
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
-
-
-//Touch
-canvas.ontouchstart = function(){
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-canvas.ontouchend = function(){
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    canvas.ontouchend = function(){
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 }
