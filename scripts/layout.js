@@ -35,14 +35,24 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 var margin = [25, 25];
-
 var size = [0, 0, 0]
+
+let drinkTitle = document.getElementById("drinkTitle");
+let drinkAmount = document.getElementById("drinkAmount");
 
 canvas.style.position = "fixed";
 
 windowSize() ? pageSizeUpdate() : null;
 
 function pageSizeUpdate(){
+    if(drinkChoice[0] == drinkChoice[1]){
+        pageSizeUpdateNew();
+    } else {
+        pageSizeUpdateNormal();
+    }
+}
+
+function pageSizeUpdateNormal(){
     canvas.style.left = margin[0] + "px";
     canvas.setAttribute("width", (pageSize[0] - (margin[0] * 2)) + "px");
 
@@ -62,6 +72,31 @@ function pageSizeUpdate(){
 
     btnPlus.style.top = (pageMiddle[1] - (btnPlus.height / 2) - btnOffset) + "px";
     btnMinus.style.top = (pageMiddle[1] - (btnMinus.height / 2) + btnOffset) + "px";
+    btnMid.style.top = (pageMiddle[1] - (btnMid.height / 2)) + "px";
+
+    btnMidOutMove(0);
+}
+
+function pageSizeUpdateNew(){
+    canvas.style.left = margin[0] + "px";
+    canvas.setAttribute("width", (pageSize[0] - (margin[0] * 2)) + "px");
+
+    canvas.style.top = margin[1] + "px";
+    canvas.setAttribute("height", (pageSize[1] - (margin[1] * 2)) + "px");
+    
+    size = [0, parseInt(pageSize[0] / 100), parseInt(pageSize[1] / 100)];
+    size[1] < size[2] ? size[0] = size[1] : size[0] = size[2];
+    btnPlus.width = size[0] * 25; btnPlus.height = size[0] * 25;
+    btnMinus.width = size[0] * 25; btnMinus.height = size[0] * 25;
+    btnMid.width = size[0] * 50; btnMid.height = size[0] * 50;
+    btnOffset = size[0] * 22.5;
+
+    btnPlus.style.left = (pageMiddle[0] - (btnPlus.width / 2)) + "px";
+    btnMinus.style.left = (pageMiddle[0] - (btnMinus.width / 2)) + "px";
+    btnMid.style.left = (pageMiddle[0] - (btnMid.width / 2)) + "px";
+
+    btnPlus.style.top = (pageMiddle[1] - (btnPlus.height / 2)) + "px";
+    btnMinus.style.top = (pageMiddle[1] - (btnMinus.height / 2)) + "px";
     btnMid.style.top = (pageMiddle[1] - (btnMid.height / 2)) + "px";
 
     btnMidOutMove(0);

@@ -1,5 +1,12 @@
-const drink = 0;
-const counter = [0];
+var drinkChoice = [0, 1];
+let drinks = {
+    
+}
+var drinkTitleText = ["Bier"];
+var drinkCounter = [0];
+
+drinkTitle.textContent = drinkTitleText[drinkChoice[0]];
+drinkAmount.textContent = drinkCounter[drinkChoice[0]];
 
 btnPlus = document.getElementById("btnPlus");
 btnMinus = document.getElementById("btnMinus");
@@ -10,6 +17,21 @@ btnMidOut = [document.getElementById("btnMidOut"), document.getElementById("btnM
 var canvas = document.getElementById("canvas");
 
 var ctx = canvas.getContext("2d");
+
+function changeDrink(direction){
+    if(drinkChoice[0] + direction > drinkChoice[1]){
+        return;
+    } else if(drinkChoice[0] + direction < 0){
+        return;
+    } else if(drinkChoice[0] + direction == drinkChoice[1]){
+        drinkChoice[0] =+ direction;
+        creteNewDrink();
+    } else {
+        drinkChoice[0] =+ direction;
+        drinkTitle.textContent = drinkTitleText[drinkChoice[0]];
+        drinkAmount.textContent = drinkCounter[drinkChoice[0]];
+    }
+}
 
 //Clicks
 btnPlus.onclick = function(){
