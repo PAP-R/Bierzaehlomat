@@ -112,8 +112,18 @@ if(!mobile){
     }
 } else {
     //Touch
-    document.addEventListener("touchmove", process_touchmove, false);
-    function process_touchmove(ev){
-        alert(ev.touches.length);
+    document.ontouchmove = function(event){
+        var mousePos = [event.targetTouches[0].clientX, event.targetTouches[0].clientY];
+        
+        cursorCircle.style.left = (mousePos[0] - 50) + "px";
+        cursorCircle.style.top = (mousePos[1] - 50) + "px";
+
+        cursorTextX.style.left = (mousePos[0] + 60) + "px";
+        cursorTextX.style.top = (mousePos[1] - 50) + "px";
+        cursorTextX.textContent = "X:" + mousePos[0];
+
+        cursorTextY.style.left = (mousePos[0] + 60) + "px";
+        cursorTextY.style.top = (mousePos[1] - 25) + "px";
+        cursorTextY.textContent = "Y:" + mousePos[1];
     }
 }
