@@ -113,6 +113,7 @@ if(!mobile){
 } else {
     //Touch
     document.ontouchmove = function(event){
+        event.preventDefault();
         var mousePos = [event.targetTouches[0].clientX, event.targetTouches[0].clientY];
         
         cursorCircle.style.left = (mousePos[0] - 50) + "px";
