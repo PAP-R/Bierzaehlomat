@@ -1,11 +1,11 @@
 var pageSize = [null, null];
 var pageMiddle = [null, null];
 
-var mobile = false;
+/*var mobile = false;
 
 if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     mobile = true;
-}
+}*/
 
 function windowSize(){
     if(typeof window.innerWidth != 'undefined'){
