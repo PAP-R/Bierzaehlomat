@@ -27,9 +27,9 @@ let btnMid = document.getElementById("btnMid");
 
 var btnOffset = 90;
 
-let mouseCircle = document.getElementById("mouseCircle");
-let mouseTextX = document.getElementById("mouseX");
-let mouseTextY = document.getElementById("mouseY");
+let cursorCircle = document.getElementById("cursorCircle");
+let cursorTextX = document.getElementById("mouseX");
+let cursorTextY = document.getElementById("mouseY");
 
 var canvas = document.getElementById("canvas");
 
@@ -99,26 +99,31 @@ if(!mobile){
     document.onmousemove = function(event){
         var mousePos = [event.clientX, event.clientY];
         
-        mouseCircle.style.left = (mousePos[0] - 50) + "px";
-        mouseCircle.style.top = (mousePos[1] - 50) + "px";
+        cursorCircle.style.left = (mousePos[0] - 50) + "px";
+        cursorCircle.style.top = (mousePos[1] - 50) + "px";
 
-        mouseTextX.style.left = (mousePos[0] + 60) + "px";
-        mouseTextX.style.top = (mousePos[1] - 50) + "px";
-        mouseTextX.textContent = "X:" + mousePos[0];
+        cursorTextX.style.left = (mousePos[0] + 60) + "px";
+        cursorTextX.style.top = (mousePos[1] - 50) + "px";
+        cursorTextX.textContent = "X:" + mousePos[0];
 
-        mouseTextY.style.left = (mousePos[0] + 60) + "px";
-        mouseTextY.style.top = (mousePos[1] - 25) + "px";
-        mouseTextY.textContent = "Y:" + mousePos[1];
+        cursorTextY.style.left = (mousePos[0] + 60) + "px";
+        cursorTextY.style.top = (mousePos[1] - 25) + "px";
+        cursorTextY.textContent = "Y:" + mousePos[1];
     }
 } else {
     //Touch
-    canvas.ontouchstart = function(){
-        ctx.fillStyle = "blue";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    document.ontouchmove  = function(event){
+        var touchPos = [event.clientX, event.clientY];
+        
+        cursorCircle.style.left = (touchPos[0] - 50) + "px";
+        cursorCircle.style.top = (touchPos[1] - 50) + "px";
 
-    canvas.ontouchend = function(){
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        cursorTextX.style.left = (touchPos[0] + 60) + "px";
+        cursorTextX.style.top = (touchPos[1] - 50) + "px";
+        cursorTextX.textContent = "X:" + touchPos[0];
+
+        cursorTextY.style.left = (touchPos[0] + 60) + "px";
+        cursorTextY.style.top = (touchPos[1] - 25) + "px";
+        cursorTextY.textContent = "Y:" + touchPos[1];
     }
 }
