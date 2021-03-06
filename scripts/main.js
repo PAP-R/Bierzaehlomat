@@ -5,8 +5,7 @@ let btnPlus = document.getElementById("btnPlus")
 let btnMinus = document.getElementById("btnMinus");
 let btnMid = document.getElementById("btnMid");
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+
 
 //Clicks
 btnPlus.onclick = function(){

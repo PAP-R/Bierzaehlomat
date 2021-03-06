@@ -5,11 +5,15 @@
         <title>Bierzählomat</title>
     </head>
     <body>
-        <h1>AAAAAAAAAAAAAAAA</h1>
-        <canvas id="canvas" style="border: 1px solid black"></canvas>
-        <img src="images/btnMid.png" id="btnMid" width="200" height="200" style="position: fixed;" draggable="false">
-        <img src="images/btnPlus.png" id="btnPlus" width="100" height="100" style="position: fixed;" draggable="false">
-        <img src="images/btnMinus.png" id="btnMinus" width="100" height="100" style="position: fixed;" draggable="false">
+        <canvas id="canvas" style="border: 1px solid black" draggable="true"></canvas>
+
+        <img src="images/btnMid.png" id="mouseCircle" width="100" height="100" style="position: fixed;" draggable="false">
+        <h1 id="mouseX" style="position: fixed;">X:</h1>
+        <h1 id="mouseY" style="position: fixed;">Y:</h1>
+        
+        <img src="images/btnMid.png" id="btnMid" width="100" height="100" style="position: fixed;" draggable="false">
+        <img src="images/btnPlus.png" id="btnPlus" width="50" height="50" style="position: fixed;" draggable="false">
+        <img src="images/btnMinus.png" id="btnMinus" width="50" height="50" style="position: fixed;" draggable="false">
         <script src="scripts/layout.js"></script>
         <script src="scripts/main.js"></script>
     </body>
