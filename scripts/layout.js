@@ -28,8 +28,8 @@ let btnMid = document.getElementById("btnMid");
 var btnOffset = 90;
 
 let cursorCircle = document.getElementById("cursorCircle");
-let cursorTextX = document.getElementById("mouseX");
-let cursorTextY = document.getElementById("mouseY");
+let cursorTextX = document.getElementById("cursorX");
+let cursorTextY = document.getElementById("cursorY");
 
 var canvas = document.getElementById("canvas");
 
