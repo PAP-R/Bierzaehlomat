@@ -29,9 +29,6 @@ let btnMidOut = [document.getElementById("btnMidOut"), document.getElementById("
 
 var btnOffset = 90;
 
-let cursorCircle = document.getElementById("cursorCircle");
-let cursorTextX = document.getElementById("cursorX");
-let cursorTextY = document.getElementById("cursorY");
 
 var canvas = document.getElementById("canvas");
 
