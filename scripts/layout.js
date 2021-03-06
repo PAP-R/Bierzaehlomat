@@ -48,11 +48,11 @@ function pageSizeUpdate(){
     canvas.style.top = margin[1] + "px";
     canvas.setAttribute("height", (pageSize[1] - (margin[1] * 2)) + "px");
 
-    for(var i = 1; i * 250 < pageSize[0] && i * 100 < pageSize[1]; i++){
-        btnPlus.width = i * 50; btnPlus.height = i * 50;
-        btnMinus.width = i * 50; btnMinus.height = i * 50;
-        btnMid.width = i * 100; btnMid.height = i * 100;
-        btnOffset = i * 45;
+    for(var i = 1; i * 100 < pageSize[0] && i * 100 < pageSize[1]; i++){
+        btnPlus.width = i * 25; btnPlus.height = i * 25;
+        btnMinus.width = i * 25; btnMinus.height = i * 25;
+        btnMid.width = i * 50; btnMid.height = i * 50;
+        btnOffset = i * 22.5;
     }
 
     btnPlus.style.left = (pageMiddle[0] - (btnPlus.width / 2)) + "px";
