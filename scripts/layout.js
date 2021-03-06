@@ -25,6 +25,8 @@ let btnPlus = document.getElementById("btnPlus")
 let btnMinus = document.getElementById("btnMinus");
 let btnMid = document.getElementById("btnMid");
 
+let btnMidOut = [document.getElementById("btnMidOut"), document.getElementById("btnMidNE"), document.getElementById("btnMidSE"), document.getElementById("btnMidSW"), document.getElementById("btnMidNW")];
+
 var btnOffset = 90;
 
 let cursorCircle = document.getElementById("cursorCircle");
@@ -37,6 +39,8 @@ var ctx = canvas.getContext("2d");
 
 var margin = [25, 25];
 
+var size = [0, 0, 0]
+
 canvas.style.position = "fixed";
 
 windowSize() ? pageSizeUpdate() : null;
@@ -47,13 +51,13 @@ function pageSizeUpdate(){
 
     canvas.style.top = margin[1] + "px";
     canvas.setAttribute("height", (pageSize[1] - (margin[1] * 2)) + "px");
-
-    for(var i = 1; i * 100 < pageSize[0] && i * 100 < pageSize[1]; i++){
-        btnPlus.width = i * 25; btnPlus.height = i * 25;
-        btnMinus.width = i * 25; btnMinus.height = i * 25;
-        btnMid.width = i * 50; btnMid.height = i * 50;
-        btnOffset = i * 22.5;
-    }
+    
+    size = [0, parseInt(pageSize[0] / 100), parseInt(pageSize[1] / 100)];
+    size[1] < size[2] ? size[0] = size[1] : size[0] = size[2];
+    btnPlus.width = size[0] * 25; btnPlus.height = size[0] * 25;
+    btnMinus.width = size[0] * 25; btnMinus.height = size[0] * 25;
+    btnMid.width = size[0] * 50; btnMid.height = size[0] * 50;
+    btnOffset = size[0] * 22.5;
 
     btnPlus.style.left = (pageMiddle[0] - (btnPlus.width / 2)) + "px";
     btnMinus.style.left = (pageMiddle[0] - (btnMinus.width / 2)) + "px";
@@ -62,6 +66,62 @@ function pageSizeUpdate(){
     btnPlus.style.top = (pageMiddle[1] - (btnPlus.height / 2) - btnOffset) + "px";
     btnMinus.style.top = (pageMiddle[1] - (btnMinus.height / 2) + btnOffset) + "px";
     btnMid.style.top = (pageMiddle[1] - (btnMid.height / 2)) + "px";
+
+    btnMidOutMove(0);
+}
+
+function btnMidOutSize(size, offset){
+    var os = offset / 50;
+    for(var j = 1; j < 5; j++){
+        btnMidOut[j].width = (size + os) * 15; btnMidOut[j].height = (size + os) * 22.5;
+    }
+}
+
+function btnMidOutMove(offset){
+    btnMidOutSize(size[0], offset);
+
+    btnMidOut[1].style.right = (pageMiddle[0] - (btnMid.width) / 2) - offset + "px";
+    btnMidOut[1].style.bottom = pageMiddle[1] + offset / 2 + "px";
+    
+    btnMidOut[2].style.right = (pageMiddle[0] - (btnMid.width) / 2) - offset + "px";
+    btnMidOut[2].style.top = pageMiddle[1] + offset / 2 + "px";
+
+    btnMidOut[3].style.left = (pageMiddle[0] - (btnMid.width) / 2) - offset + "px";
+    btnMidOut[3].style.top = pageMiddle[1] + offset / 2 + "px";
+    
+    btnMidOut[4].style.left = (pageMiddle[0] - (btnMid.width) / 2) - offset + "px";
+    btnMidOut[4].style.bottom = pageMiddle[1] + offset / 2 + "px";
+}
+
+var btnMidInterval = null;
+function btnMidOutMoveSmooth(start, end){
+    var offset = start;
+    if(start <= end){
+    }
+    clearInterval(btnMidInterval);
+    btnMidInterval = setInterval(frame, 0.1);
+    function frame(){
+        if(start <= end){
+            btnMidOut[0].style.visibility = "visible";
+            btnMid.style.visibility = "hidden";
+            if(offset >= end){
+                clearInterval(btnMidInterval);
+            } else {
+                btnMidOutMove(offset);
+                offset++;
+            }
+        } else {
+            if(offset <= end){
+                btnMid.style.visibility = "visible";
+                btnMidOut[0].style.visibility = "hidden";
+                clearInterval(btnMidInterval);
+            } else {
+                btnMidOutMove(offset);
+                offset--;
+            }
+        }
+    }
+    btnMidOutMove(end);
 }
 
 //Mouse Hover
@@ -84,18 +144,8 @@ if(!mobile){
 }
 
 //Canvas Move
-if(!mobile){
+/*if(!mobile){
     //Mouse
-    canvas.ondragstart = function(){
-        ctx.fillStyle = "blue";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
-    canvas.ondragend = function(){
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
     document.onmousemove = function(event){
         var mousePos = [event.clientX, event.clientY];
         
@@ -127,4 +177,5 @@ if(!mobile){
         cursorTextY.style.top = (mousePos[1] - 25) + "px";
         cursorTextY.textContent = "Y:" + mousePos[1];
     }
-}
+}*/
+
