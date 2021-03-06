@@ -112,19 +112,8 @@ if(!mobile){
     }
 } else {
     //Touch
-    document.ontouchmove  = function(event){
-        var touchPositions = [event.clientX, event.clientY];
-        var touchPos = touchPositions[0];
-        
-        cursorCircle.style.left = (touchPos[0] - 50) + "px";
-        cursorCircle.style.top = (touchPos[1] - 50) + "px";
-
-        cursorTextX.style.left = (touchPos[0] + 60) + "px";
-        cursorTextX.style.top = (touchPos[1] - 50) + "px";
-        cursorTextX.textContent = "X:" + touchPos[0];
-
-        cursorTextY.style.left = (touchPos[0] + 60) + "px";
-        cursorTextY.style.top = (touchPos[1] - 25) + "px";
-        cursorTextY.textContent = "Y:" + touchPos[1];
+    document.addEventListener("touchmove", process_touchmove, false);
+    function process_touchmove(ev){
+        alert(ev.touches.length);
     }
 }
