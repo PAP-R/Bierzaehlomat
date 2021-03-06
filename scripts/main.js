@@ -47,9 +47,9 @@ canvas.ontouchmove = function(evt){
 
 canvas.ontouchend = function(evt){
     if(canvas.style.left >= pageMiddle[0]){
-        console.log('Tab nach Links');
+        alert('Tab nach Links');
     } else if(canvas.style.right >= pageMiddle[0]){
-        console.log('Tab nach Rechts');
+        alert('Tab nach Rechts');
     }
     windowSize() ? pageSizeUpdate() : null;
 }
