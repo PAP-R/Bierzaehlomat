@@ -113,7 +113,8 @@ if(!mobile){
 } else {
     //Touch
     document.ontouchmove  = function(event){
-        var touchPos = [event.clientX, event.clientY];
+        var touchPositions = [event.clientX, event.clientY];
+        var touchPos = touchPositions[0];
         
         cursorCircle.style.left = (touchPos[0] - 50) + "px";
         cursorCircle.style.top = (touchPos[1] - 50) + "px";
