@@ -1,9 +1,4 @@
-const request = new XMLHttpRequest();
 const url = "drinks.json";
-request.open("GET", url);
-request.send();
-
-console.log("Check 2");
 
 let drinks = {
     "drinkChoices": [0, 1],
@@ -12,13 +7,45 @@ let drinks = {
     "drinkAPC": [0.5]
 }
 
-request.onload = function(){
-    drinks = request.response;
+var drinkChoice;
+var drinkTitleText;
+var drinkCounterText;
+var drinkAPCText;
+
+function getData(){
+    drinkChoice = drinks["drinkChoices"];
+    drinkTitleText = drinks["drinkTitle"];
+    drinkCounterText = drinks["drinkCounter"];
+    drinkAPCText = drinks["drinkAPC"];
 }
 
-var drinkChoice = drinks["drinkChoices"];
-var drinkTitleText = drinks["drinkTitle"];
-var drinkCounterText = drinks["drinkCounter"];
-var drinkAPCText = drinks["drinkAPC"];
+function prepareData(){
+    drinks["drinkChoices"] = drinkChoice;
+    drinks["drinkTitle"] = drinkTitleText;
+    drinks["drinkCounter"] = drinkCounterText;
+    drinks["drinkAPC"] = drinkAPCText;
+}
 
-console.log("Check 3");
+function getFile(){
+    const request = new XMLHttpRequest();
+    
+    request.open("GET", url, true);
+    request.send();
+
+    request.onload = function(){
+        if(this.status == 4){
+            drinks = request.response;
+        }
+    }
+
+    getData();
+}
+
+function sendFile(){
+    prepareData();
+
+    const request = new XMLHttpRequest();
+
+    request.open("PUT", url, true);
+    request.send(JSON.stringify(drinks));
+}

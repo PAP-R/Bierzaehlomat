@@ -3,6 +3,8 @@ if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini
     mobile = true;
 }
 
+getFile();
+
 let btnPlus = document.getElementById("btnPlus")
 let btnMinus = document.getElementById("btnMinus");
 
@@ -12,8 +14,7 @@ let btnMidOut = [document.getElementById("btnMidOut"), document.getElementById("
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+let textSet = document.getElementById("textSet");
 let drinkTitle = document.getElementById("drinkTitle");
 let drinkCounter = document.getElementById("drinkCounter");
 let drinkAPC = document.getElementById("drinkAPC");
-
-console.log("Check 1");

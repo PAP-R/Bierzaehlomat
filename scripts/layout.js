@@ -21,24 +21,24 @@ var btnOffset = 90;
 var margin = [25, 25];
 var size = [0, 0, 0];
 
-function textSet(){
-    drinkTitle.textContent = drinkTitle[drinkChoice[0]];
-    drinkAmount.textContent = drinkAmount[drinkChoice[0]];
-    drinkAPC.textContent = drinkAPC[drinkChoice[0]];
+function textUpdate(){
+    drinkTitle.textContent = drinkTitleText[drinkChoice[0]];
+    drinkCounter.textContent = drinkCounterText[drinkChoice[0]];
+    drinkAPC.textContent = drinkAPCText[drinkChoice[0]];
 }
 
-textSet();
+textUpdate();
 
 canvas.style.position = "fixed";
 
-windowSize() ? pageSizeUpdate() : null;
+windowSize() ? pageSizeUpdateNormal() : null;
 
 function pageSizeUpdate(){
-    /*if(drinkChoice[0] == drinkChoice[1]){
+    if(drinkChoice[0] >= drinkChoice[1]){
         pageSizeUpdateNew();
-    } else {*/
+    } else {
         pageSizeUpdateNormal();
-    //}
+    }
 }
 
 function pageSizeUpdateNormal(){
@@ -54,6 +54,12 @@ function pageSizeUpdateNormal(){
     btnMinus.width = size[0] * 25; btnMinus.height = size[0] * 25;
     btnMid.width = size[0] * 50; btnMid.height = size[0] * 50;
     btnOffset = size[0] * 22.5;
+
+    textSet.style.fontSize = size[0] * 4;
+
+    drinkAPC.style.left = (pageMiddle[0] - (drinkAPC.style.width / 2)) + "px";
+    drinkAPC.style.top = (pageMiddle[1] - (drinkAPC.style.height / 2)) + "px";
+
 
     btnPlus.style.left = (pageMiddle[0] - (btnPlus.width / 2)) + "px";
     btnMinus.style.left = (pageMiddle[0] - (btnMinus.width / 2)) + "px";
@@ -117,8 +123,6 @@ function btnMidOutMove(offset){
 var btnMidInterval = null;
 function btnMidOutMoveSmooth(start, end){
     var offset = start;
-    if(start <= end){
-    }
     clearInterval(btnMidInterval);
     btnMidInterval = setInterval(frame, 0.1);
     function frame(){
@@ -129,15 +133,18 @@ function btnMidOutMoveSmooth(start, end){
                 clearInterval(btnMidInterval);
             } else {
                 btnMidOutMove(offset);
+                drinkAPC.style.fontSize = textSet.style.fontSize * (1 + offset / 100);
                 offset++;
             }
         } else {
             if(offset <= end){
+                drinkAPC.style.fontSize = textSet.style.fontSize;
                 btnMid.style.visibility = "visible";
                 btnMidOut[0].style.visibility = "hidden";
                 clearInterval(btnMidInterval);
             } else {
                 btnMidOutMove(offset);
+                drinkAPC.style.fontSize = textSet.style.fontSize * (1 + offset / 100);
                 offset--;
             }
         }
@@ -199,5 +206,3 @@ if(!mobile){
         cursorTextY.textContent = "Y:" + mousePos[1];
     }
 }*/
-
-console.log("Check 4");

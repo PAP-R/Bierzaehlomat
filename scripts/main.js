@@ -1,5 +1,3 @@
-
-
 function changeDrink(direction){
     if(drinkChoice[0] + direction > drinkChoice[1]){
         return;
@@ -17,9 +15,20 @@ function changeDrink(direction){
 
 //Clicks
 btnPlus.onclick = function(){
+    getFile();
+    drinkCounterText[drinkChoice[0]] =+ drinkAPCText[drinkChoice[0]];
+    sendFile();
+    textUpdate();
 }
 
 btnMinus.onclick = function(){
+    getFile();
+    drinkCounterText[drinkChoice[0]] =- drinkAPCText[drinkChoice[0]];
+    if(drinkCounterText[drinkChoice[0]] < 0){
+        drinkCounterText[drinkChoice[0]] = 0;
+    }
+    sendFile();
+    textUpdate();
 }
 
 btnMid.ontouchstart = function(evt){
@@ -45,8 +54,6 @@ canvas.ontouchmove = function(evt){
     touchPos[2] = [touchPos[1][0] - touchPos[0][0], touchPos[1][1] - touchPos[0][1]];
     
     canvas.style.left = canvasPos[0] + touchPos[2][0] + "px";
-
-    console.log(touchPos[0], touchPos[1], touchPos[2]);
 }
 
 canvas.ontouchend = function(evt){
@@ -78,5 +85,3 @@ function handleTouchMovement(evt){
     var xDiff = xDown - xUp;
 
 }*/
-
-console.log("Check 5");
