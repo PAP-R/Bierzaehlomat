@@ -3,7 +3,7 @@ const url = "drinks.json";
 request.open("GET", url);
 request.send();
 
-const drinks ={
+let drinks = {
     "drinkChoices": [0, 1],
     "drinkTitle": ["Bier"],
     "drinkCounter": [0],
