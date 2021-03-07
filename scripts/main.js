@@ -1,10 +1,3 @@
-var drinkChoice = [0, 1];
-let drinks = {
-    
-}
-var drinkTitleText = ["Bier"];
-var drinkCounter = [0];
-
 drinkTitle.textContent = drinkTitleText[drinkChoice[0]];
 drinkAmount.textContent = drinkCounter[drinkChoice[0]];
 

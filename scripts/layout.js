@@ -45,11 +45,11 @@ canvas.style.position = "fixed";
 windowSize() ? pageSizeUpdate() : null;
 
 function pageSizeUpdate(){
-    if(drinkChoice[0] == drinkChoice[1]){
+    /*if(drinkChoice[0] == drinkChoice[1]){
         pageSizeUpdateNew();
-    } else {
+    } else {*/
         pageSizeUpdateNormal();
-    }
+    //}
 }
 
 function pageSizeUpdateNormal(){

@@ -1,9 +1,6 @@
 {
     "drinkChoices": [0, 1],
-    "drinks": [
-        {
-            "drinkTitle": "Bier",
-            "drinkAmoount": 0
-        }
-    ]
+    "drinkTitle": ["Bier"],
+    "drinkCounter": [0],
+    "drinkAPC": [0.5]
 }

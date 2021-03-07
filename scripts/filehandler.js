@@ -1,8 +1,20 @@
-const http = new XMLHttpRequest();
+const request = new XMLHttpRequest();
 const url = "drinks.json";
-http.open("GET", url);
-http.send();
+request.open("GET", url);
+request.send();
 
-http.onreadystatechange=(e)=>{
-    console.log(http.responseText);
+const drinks ={
+    "drinkChoices": [0, 1],
+    "drinkTitle": ["Bier"],
+    "drinkCounter": [0],
+    "drinkAPC": [0.5]
 }
+
+request.onload = function(){
+    drinks = request.response;
+}
+
+var drinkChoice = drinks["drinkChoices"];
+var drinkTitleText = drinks["drinkTitle"];
+var drinkCounter = drinks["drinkCounter"];
+var drinkAPC = drinks["drinkAPC"];
