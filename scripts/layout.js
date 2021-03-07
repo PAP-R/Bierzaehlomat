@@ -23,8 +23,17 @@ var size = [0, 0, 0];
 
 function textUpdate(){
     drinkTitle.textContent = drinkTitleText[drinkChoice[0]];
-    drinkCounter.textContent = drinkCounterText[drinkChoice[0]];
-    drinkAPC.textContent = drinkAPCText[drinkChoice[0]];
+    drinkCounter.textContent = drinkCounterText[drinkChoice[0]] + "L";
+    drinkAPC.textContent = drinkAPCText[drinkChoice[0]] + "L";
+
+    drinkTitle.style.left = (pageMiddle[0] - (drinkTitle.clientWidth / 2)) + "px";
+    drinkTitle.style.top = (parseInt(btnPlus.style.top) - (drinkTitle.clientHeight * 2)) + "px";
+
+    drinkCounter.style.left = (pageMiddle[0] - (drinkCounter.clientWidth / 2)) + "px";
+    drinkCounter.style.top = (parseInt(btnPlus.style.top) - (drinkCounter.clientHeight)) + "px";
+
+    drinkAPC.style.left = (pageMiddle[0] - (drinkAPC.clientWidth / 2)) + "px";
+    drinkAPC.style.top = (pageMiddle[1] - (drinkAPC.clientHeight / 2)) + "px";
 }
 
 textUpdate();
@@ -55,11 +64,6 @@ function pageSizeUpdateNormal(){
     btnMid.width = size[0] * 50; btnMid.height = size[0] * 50;
     btnOffset = size[0] * 22.5;
 
-    textSet.style.fontSize = size[0] * 4;
-
-    drinkAPC.style.left = (pageMiddle[0] - (drinkAPC.style.width / 2)) + "px";
-    drinkAPC.style.top = (pageMiddle[1] - (drinkAPC.style.height / 2)) + "px";
-
 
     btnPlus.style.left = (pageMiddle[0] - (btnPlus.width / 2)) + "px";
     btnMinus.style.left = (pageMiddle[0] - (btnMinus.width / 2)) + "px";
@@ -70,6 +74,11 @@ function pageSizeUpdateNormal(){
     btnMid.style.top = (pageMiddle[1] - (btnMid.height / 2)) + "px";
 
     btnMidOutMove(0);
+
+
+    textSet.style.fontSize = size[0] * 4;
+
+    textUpdate();
 }
 
 function pageSizeUpdateNew(){

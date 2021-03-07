@@ -33,7 +33,7 @@ function getFile(){
     request.send();
 
     request.onload = function(){
-        if(this.status == 4){
+        if(this.readyState == 4 && this.status == 200){
             drinks = request.response;
         }
     }

@@ -16,14 +16,14 @@ function changeDrink(direction){
 //Clicks
 btnPlus.onclick = function(){
     getFile();
-    drinkCounterText[drinkChoice[0]] =+ drinkAPCText[drinkChoice[0]];
+    drinkCounterText[drinkChoice[0]] = drinkCounterText[drinkChoice[0]] + drinkAPCText[drinkChoice[0]];
     sendFile();
     textUpdate();
 }
 
 btnMinus.onclick = function(){
     getFile();
-    drinkCounterText[drinkChoice[0]] =- drinkAPCText[drinkChoice[0]];
+    drinkCounterText[drinkChoice[0]] = drinkCounterText[drinkChoice[0]] - drinkAPCText[drinkChoice[0]];
     if(drinkCounterText[drinkChoice[0]] < 0){
         drinkCounterText[drinkChoice[0]] = 0;
     }
