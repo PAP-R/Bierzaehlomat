@@ -1,11 +1,7 @@
 var pageSize = [null, null];
 var pageMiddle = [null, null];
 
-var mobile = false;
 
-if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    mobile = true;
-}
 
 function windowSize(){
     if(typeof window.innerWidth != 'undefined'){
@@ -21,24 +17,17 @@ window.onresize = function(){
     windowSize() ? pageSizeUpdate() : null;
 }
 
-let btnPlus = document.getElementById("btnPlus")
-let btnMinus = document.getElementById("btnMinus");
-let btnMid = document.getElementById("btnMid");
-
-let btnMidOut = [document.getElementById("btnMidOut"), document.getElementById("btnMidNE"), document.getElementById("btnMidSE"), document.getElementById("btnMidSW"), document.getElementById("btnMidNW")];
-
 var btnOffset = 90;
-
-
-var canvas = document.getElementById("canvas");
-
-var ctx = canvas.getContext("2d");
-
 var margin = [25, 25];
-var size = [0, 0, 0]
+var size = [0, 0, 0];
 
-let drinkTitle = document.getElementById("drinkTitle");
-let drinkAmount = document.getElementById("drinkAmount");
+function textSet(){
+    drinkTitle.textContent = drinkTitle[drinkChoice[0]];
+    drinkAmount.textContent = drinkAmount[drinkChoice[0]];
+    drinkAPC.textContent = drinkAPC[drinkChoice[0]];
+}
+
+textSet();
 
 canvas.style.position = "fixed";
 

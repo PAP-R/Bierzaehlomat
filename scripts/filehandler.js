@@ -16,5 +16,5 @@ request.onload = function(){
 
 var drinkChoice = drinks["drinkChoices"];
 var drinkTitleText = drinks["drinkTitle"];
-var drinkCounter = drinks["drinkCounter"];
-var drinkAPC = drinks["drinkAPC"];
+var drinkCounterText = drinks["drinkCounter"];
+var drinkAPCText = drinks["drinkAPC"];

@@ -1,15 +1,4 @@
-drinkTitle.textContent = drinkTitleText[drinkChoice[0]];
-drinkAmount.textContent = drinkCounter[drinkChoice[0]];
 
-btnPlus = document.getElementById("btnPlus");
-btnMinus = document.getElementById("btnMinus");
-btnMid = document.getElementById("btnMid");
-
-btnMidOut = [document.getElementById("btnMidOut"), document.getElementById("btnMidNE"), document.getElementById("btnMidSE"), document.getElementById("btnMidSW"), document.getElementById("btnMidNW")];
-
-var canvas = document.getElementById("canvas");
-
-var ctx = canvas.getContext("2d");
 
 function changeDrink(direction){
     if(drinkChoice[0] + direction > drinkChoice[1]){
