@@ -78,3 +78,5 @@ function handleTouchMovement(evt){
     var xDiff = xDown - xUp;
 
 }*/
+
+console.log("Check 5");

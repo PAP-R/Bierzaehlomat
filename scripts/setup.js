@@ -15,3 +15,5 @@ var ctx = canvas.getContext("2d");
 let drinkTitle = document.getElementById("drinkTitle");
 let drinkCounter = document.getElementById("drinkCounter");
 let drinkAPC = document.getElementById("drinkAPC");
+
+console.log("Check 1");
